@@ -1,0 +1,127 @@
+<html>
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+    
+<body class="bg-light">
+<div class="container">
+ <div class="row">
+<div class="col-md-12">
+ <h3 class=" display-4 text-center text-info  mt-3"> Weight Conversion</h3>
+ </div>
+</div>
+    </div>
+   <form>
+       
+    <div class="container">
+    
+     <div class="form-group">
+    <label class="mt-5 font-weight-bold" for="exampleFormControlSelect1">Choose from following options</label>
+    <select class="form-control" id="option">
+      <option>Value in Grams</option>
+      <option>Value in Kilograms</option>
+      <option>Value in Ounces</option>
+      <option>Value in Pounds</option>
+      </select>
+  </div>
+    
+    
+    
+    <div class="form-group">
+    <input type="number" id="convert" placeholder="Enter Value ..." class="form-control form-control-lg mt-3">
+    </div>
+ 
+    <div id="results"> 
+    
+    <div class="card bg-success mb-2">
+    <div class="card-body">
+    <h5> Grams</h5>
+    <div id="gramsOutput"> </div>
+    </div>
+    </div>
+    
+    <div class="card bg-warning mb-2">
+    <div class="card-body">
+    <h5> Kilograms</h5>
+    <div id="kiloOutput"> </div>
+    </div>
+    </div>
+    
+    <div class="card bg-info">
+    <div class="card-body">
+    <h5> Ounces</h5>
+    <div id="ouncesOutput"> </div>
+    </div>
+    </div>
+     
+     <div class=" mt-2 card bg-danger">
+    <div class="card-body">
+    <h5> Pounds</h5>
+    <div id="poundsOutput"> </div>
+    </div>
+    </div>
+      
+     </div>
+     
+     
+    
+ <script>
+let option = document.getElementById('option');
+let selected =  document.getElementById('selected');
+let results = document.getElementById('results');
+	 
+let gramsOutput = document.getElementById('gramsOutput');
+let kiloOutput =  document.getElementById('kiloOutput');
+let ouncesOutput = document.getElementById('ouncesOutput');
+let poundsOutput =  document.getElementById('poundsOutput');
+
+
+
+ document.getElementById('convert').addEventListener('input', function(e){
+	 
+ let weightedVal = e.target.value;
+
+weightedVal === '' ? results.style.visibility = 'hidden' : results.style.visibility = 'visible'; 
+
+
+if(isNaN(weightedVal) || weightedVal <0) {
+window.alert("Please enter value greater than zero");
+ }
+	 
+if(option.value === "Value in Grams") {
+gramsOutput.innerHTML = weightedVal;
+
+kiloOutput.innerHTML = weightedVal *.001;
+ouncesOutput.innerHTML = weightedVal * .035;
+poundsOutput.innerHTML = weightedVal *.0022;
+	
+} else if (option.value === "Value in Kilograms") {
+ kiloOutput.innerHTML = weightedVal;
+
+gramsOutput.innerHTML = weightedVal * 1000;
+ouncesOutput.innerHTML = weightedVal * 35.27;
+poundsOutput.innerHTML = weightedVal * 2.20;
+ 
+} else if (option.value === "Value in Ounces") {
+ ouncesOutput.innerHTML = weightedVal;
+
+gramsOutput.innerHTML = weightedVal * 28.3;
+kiloOutput.innerHTML = weightedVal * .0283;
+poundsOutput.innerHTML = weightedVal *.0625;
+ 
+} else if (option.value === "Value in Pounds") {
+ poundsOutput.innerHTML = weightedVal;
+
+gramsOutput.innerHTML = weightedVal * 454;
+kiloOutput.innerHTML = weightedVal * 0.45;
+ouncesOutput.innerHTML = weightedVal * 16;
+
+}
+ 	 
+});  
+</script>
+
+</body> 
+</html>
+
+
